@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: my-fast-api
+  name: my-fast-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-fast-api
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: my-fast-api
+    spec:
+      containers:
+      - image: harbor.lab.agi-explorer.com/library/fast_api
+        name: fast-api-gsjhv
+        resources: {}
+status: {}
