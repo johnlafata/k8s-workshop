@@ -1,16 +1,5 @@
 # Interacting with Kubernetes
 
-## API
-
-- API demo with proxy
-
-```
-$ kubectl proxy
-Starting to serve on 127.0.0.1:8001
-```
-
-![Kubernetes API](./static/proxy_kubectl.png)
-
 ## Kubectl
 
 - Quick overview of Kubectl couple of sample commands
