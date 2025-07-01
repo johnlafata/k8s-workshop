@@ -1,3 +1,2 @@
 .DS_Store
-.app/fast-api-app/venv
-.app/fast-api-app/pyenv.cfg
+app/fast-api-app/venv

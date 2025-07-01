@@ -2,33 +2,30 @@
 
 ## fast_api
 
-- A simple go fast_api which just says hello
+- A simple python fast_api app which services a list of books from a memory database
 
 ## Dockerfile
 
-- A multistage Dockerfile - first part builds source code into binary
-
-- Second part takes binary from first part and creates an image
+- Containerizes the application so it can run elsewhere
 
 
 ## Building and running container locally
 
 ```
 cd app/fast-api-app
-# on my macbook, I need to specify platform as linux/amd64
-# because the image is built for linux and I am on macOS
-
-docker build --platform linux/amd64 -t fast_api .
-
-# you maybe able to skip the platform flag
 docker build  -t fast_api .
 
+# if necessary on macbook, specify platform as linux/amd64
 
-docker run -it --rm -p 8000:8000 fast_api
-
+docker build --platform linux/amd64 -t fast_api .
 ```
 
-## Pushing image
+runt the container locally
+```bash
+docker run -it --rm -p 8000:8000 fast_api
+```
+
+## Pushing image to your registry
 
 ```
 
