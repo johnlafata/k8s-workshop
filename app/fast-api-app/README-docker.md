@@ -22,7 +22,7 @@ docker push harbor.lab.agi-explorer.com/library/fast_api
 
 ## deployment
 - Create deployment
-##  create a deployment
+##  create a deployment ( substitute your repository for harbor.lab.agi-explorer.com/library )
 ```
 kubectl create deployment --image harbor.lab.agi-explorer.com/library/fast_api my-fast-api \
     --dry-run=client -o yaml  > deployment.yaml
