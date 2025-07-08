@@ -27,6 +27,3 @@ If you're interested in setting up kubernetes for learning, this is a good place
 
 - Service and service types
   - [Creating a service for application and accessing it](./content/services.md)
-
-- Where to go from here
-  - [References, links, DIY workshops etc.](./content/references.md)
