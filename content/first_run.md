@@ -3,7 +3,7 @@
 Run the nginx container image
 
 ```
-kubectl run  --image nginx
+kubectl run nginx --image nginx
 ```
 ### verify the pod is running
 ```
