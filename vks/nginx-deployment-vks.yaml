@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ffx-nginx
+  namespace: ffx-nginx-ns
+  labels:
+    app: nginx
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      securityContext:
+        runAsNonRoot: true  # Ensures the container doesn't run as root
+        runAsUser: 1001     # Specifies the user ID to run as (non-root)
+        runAsGroup: 1001    # Specifies the group ID to run as (non-root)
+        fsGroup: 1001       # Sets the primary group for the Pod's volumes
+        seccompProfile:
+          type: RuntimeDefault  # Uses the default seccomp profile for the container
+      containers:
+      - name: nginx
+        image: ffxharborpr01.ffx.co.fairfax.va.us/library/nginx:latest  # Using a specific Nginx image
+        ports:
+        - containerPort: 80
+        securityContext:
+          allowPrivilegeEscalation: false  # Prevents privilege escalation
+          readOnlyRootFilesystem: true   # Makes the container's root filesystem read-only
+          capabilities:
+            drop:
+            - ALL  # Drops all default capabilities
+            add:
+            - NET_BIND_SERVICE # Allows binding to privileged ports (like 80)
+        volumeMounts:
+        - name: nginx-cache
+          mountPath: /var/cache/nginx
+        - name: nginx-run
+          mountPath: /var/run
+        - name: nginx-tmp
+          mountPath: /tmp
+      volumes:
+      - name: nginx-cache
+        emptyDir: {}
+      - name: nginx-run
+        emptyDir: {}
+      - name: nginx-tmp
+        emptyDir: {}
