@@ -2,11 +2,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ffx-nginx-service
-  namespace: ffx-nginx-ns
+  name: nginx-service
 spec:
   selector:
-    app: nginx-simple
+    app: nginx-deployment
   ports:
     - protocol: TCP
       port: 80

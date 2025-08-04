@@ -2,18 +2,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-simple
+  name: nginx-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hello
+      app: nginx-deployment
   template:
     metadata:
       labels:
-        app: nginx-simple
+        app: nginx-deployment
         tier: frontend
     spec:
       containers:
       - name: nginx
-        image: "nginxdemos/hello"
+        image: "nginx:latest"
