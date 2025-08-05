@@ -1,24 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
+  name: my-fast-api
   labels:
     app: my-fast-api
-  name: my-fast-api
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: my-fast-api
-  strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: my-fast-api
     spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        seccompProfile:
+          type: RuntimeDefault  # Uses the default seccomp profile for the container
       containers:
       - image: harbor.lab.agi-explorer.com/library/fast_api
         name: fast-api-books
-        resources: {}
-status: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL

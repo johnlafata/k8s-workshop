@@ -17,6 +17,8 @@ spec:
       labels:
         app: my-fast-api
     spec:
+      imagePullSecrets:
+      - name: harbor
       containers:
       - image: harbor.lab.agi-explorer.com/library/fast_api
         name: fast-api-books

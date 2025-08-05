@@ -25,3 +25,6 @@ kubectl create deployment --image harbor.lab.agi-explorer.com/library/fast_api m
     --dry-run=client -o yaml  > deployment.yaml
 ```
 
+kubectl apply -f apps/fast-api-app/service-loadBalancer.yaml -n my-restricted-ns
+# on minikube
+minikube service fast-api-service -n my-restricted-ns --url

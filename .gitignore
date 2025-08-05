@@ -1,2 +1,3 @@
 .DS_Store
 app/fast-api-app/venv
+vks/harbor-registry-secret.sh
