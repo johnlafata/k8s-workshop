@@ -34,14 +34,19 @@ docker tag fast_api harbor.lab.agi-explorer.com/library/fast_api
 docker push harbor.lab.agi-explorer.com/library/fast_api 
 ```
 
-## deploy 
-
+## deploy in privileged namespace
 ```bash
-kubectl apply -f deployment.yaml
+kubectl apply -f deployment-privileged.yaml
 
 kubectl expose deployment my-fast-api --name=my-fast-api-service --port=8081 --target-port=8000 --type=LoadBalancer
 ```
 
+## deploy in restricted namespace
+```bash
+kubectl apply -f deployment-restricted.yaml
+
+kubectl expose deployment my-fast-api --name=my-fast-api-service --port=8081 --target-port=8000 --type=LoadBalancer
+```
 
 ## Validate fast_api application works
 

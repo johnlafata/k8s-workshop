@@ -19,6 +19,6 @@ spec:
     spec:
       containers:
       - image: harbor.lab.agi-explorer.com/library/fast_api
-        name: fast-api-gsjhv
+        name: fast-api-books
         resources: {}
 status: {}
