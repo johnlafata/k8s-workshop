@@ -11,7 +11,8 @@ If you're interested in setting up kubernetes for learning, this is a good place
 - Zero -> One
   - [Nginx on cloud in 60 seconds](./content/first_run.md)
   - [From app to Kubernetes in 360 seconds](./content/app_container.md)
-  
+  - [Application Security](./content/app_security.md)
+
 - Basic Constructs of Kubernetes
   - [Understanding Pod - Basics](./content/first_pod.md)
   - [ReplicaSet](./content/replicaset.md)
