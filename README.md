@@ -28,3 +28,12 @@ If you're interested in setting up kubernetes for learning, this is a good place
 
 - Service and service types
   - [Creating a service for application and accessing it](./content/services.md)
+
+- Basic operations
+  - [CI/CD basics](./content/ci_cd.md)
+  - [Helm](./content/helm.md)
+  - [Introduction to tools for monitoring and logging](./content/monitoring_tools.md)
+
+
+- Where to go from here
+  - [References, links, DIY workshops etc.](./content/references.md)

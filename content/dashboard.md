@@ -2,7 +2,7 @@
 
 - Demo the dashboard with a walkthrough
 
-- Dashboard access: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
+- Dashboard access: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/ 
 
 - URL for dashboard is 
 

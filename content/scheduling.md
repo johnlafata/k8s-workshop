@@ -65,3 +65,26 @@ Three "levels" of affinities!
 
 #### Taints & Tolerations
 
+- Taints are applied to nodes to repel pods that don't tolerate them
+- Tolerations are applied to pods to allow scheduling on tainted nodes
+- Common taint effects:
+  - `NoSchedule` - pods won't be scheduled on the node
+  - `PreferNoSchedule` - system will try to avoid scheduling pods on the node
+  - `NoExecute` - pods will be evicted from the node if already running
+
+Example taint:
+```bash
+kubectl taint nodes node1 key1=value1:NoSchedule
+```
+
+Example toleration in pod spec:
+```yaml
+tolerations:
+- key: "key1"
+  operator: "Equal"
+  value: "value1"
+  effect: "NoSchedule"
+```
+
+- Master nodes typically have taints to prevent regular workloads from scheduling
+- Useful for dedicating nodes to specific workloads or creating node pools
