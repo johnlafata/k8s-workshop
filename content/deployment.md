@@ -97,7 +97,7 @@ $ kubectl scale deployment.v1.apps/nginx-deployment --replicas=10
 If you want autoscaling (Which requires few other things to work)
 
 ```
-$ kubectl autoscale deployment.v1.apps/nginx-deployment --min=10 --max=15 --cpu-percent=80
+$ kubectl autoscale deployment.v1.apps/nginx-deployment --min=2 --max=5 --cpu-percent=80
 
 ```
 
