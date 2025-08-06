@@ -24,6 +24,7 @@ If you're interested in setting up kubernetes for learning, this is a good place
   - [Scheduling](./content/scheduling.md)
 
 - Configurations
+  - [Secrets Management](./content/secrets.md)
   - [Configmaps & Secrets](./content/config.md)
 
 - Service and service types
