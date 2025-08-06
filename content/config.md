@@ -66,3 +66,79 @@ spec:
         configMap:
             name: app-config
 ```
+## Secrets Overview
+
+Secrets are similar to ConfigMaps but are specifically designed to store sensitive data such as passwords, tokens, and keys. They provide an additional layer of security for confidential information.
+
+### Key Differences from ConfigMaps:
+- Data is base64 encoded (not encrypted by default)
+- Stored in etcd with encryption at rest (when configured)
+- More restrictive access controls
+- Mounted as tmpfs volumes for better security
+
+### Secret Example
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+    name: app-secret
+    namespace: default
+type: Opaque
+data:
+    # Base64 encoded values
+    database-password: bXlwYXNzd29yZA==
+    api-key: YWJjZGVmZ2hpams=
+stringData:
+    # Plain text (automatically base64 encoded)
+    username: admin
+```
+
+## How ConfigMaps and Secrets Work Together
+
+ConfigMaps and Secrets are complementary and often used together in the same application:
+
+### Combined Usage Example
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+    name: web-app
+spec:
+    containers:
+    - name: webapp
+        image: nginx:latest
+        env:
+        # Non-sensitive config from ConfigMap
+        - name: APP_ENV
+            valueFrom:
+                configMapKeyRef:
+                    name: app-config
+                    key: environment
+        # Sensitive data from Secret
+        - name: DB_PASSWORD
+            valueFrom:
+                secretKeyRef:
+                    name: app-secret
+                    key: database-password
+        volumeMounts:
+        - name: config-vol
+            mountPath: /etc/config
+        - name: secret-vol
+            mountPath: /etc/secrets
+    volumes:
+    - name: config-vol
+        configMap:
+            name: app-config
+    - name: secret-vol
+        secret:
+            secretName: app-secret
+            defaultMode: 0400  # Read-only for owner
+```
+
+### Best Practices for Using Both:
+- Use ConfigMaps for application settings, feature flags, and non-sensitive configuration
+- Use Secrets for passwords, API keys, certificates, and other sensitive data
+- Combine both in the same Pod when applications need both types of data
+- Apply appropriate RBAC policies to control access to both resources
